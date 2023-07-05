@@ -72,3 +72,21 @@ let user1: Person;
 let user2: Person;
 let usersArray: Person[];
 usersArray = [{ name: 'nora', age: 28 }, { name: 'Max', age: 30 }];
+
+
+/* Functions & types */
+function add(a: number, b: number): number {
+  return a + b;
+};
+// 매개변수 뒤에 :number로 반환되는 값의 타입을 지정해줄수도 있음.
+// 함수에서는 매개변수 뿐만 아니라 반환되는 값의 타입도 생각해야함!
+// 하지만 마찬가지로 type reference가 사용되어 자동으로 반환되는 값의 타입을 지정해줌.
+// 가능하다면 type reference 사용하며 불필요한 코드는 작성하지 않는게 좋음
+
+function printOutput(value: any) {
+  console.log(value);
+};
+// 위 printOutput 함수는 아무것도 반환하지 않음.
+// 아무것도 반환하지 않을 때 반환 타입은 'void'.
+// void는 함수가 어떠한 값도 반환하지 않음을 뜻함
+// void는 null, undefined와 비슷하지만 항상 함수와 결합해서 사용해야 함!
