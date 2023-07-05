@@ -90,3 +90,34 @@ function printOutput(value: any) {
 // 아무것도 반환하지 않을 때 반환 타입은 'void'.
 // void는 함수가 어떠한 값도 반환하지 않음을 뜻함
 // void는 null, undefined와 비슷하지만 항상 함수와 결합해서 사용해야 함!
+
+
+/* Generics */
+function insertAtBeginning(array: any[], value: any) {
+  const newArray = [value, ...array];
+  return newArray;
+};
+const demoArray = [1, 2, 3];
+const updatedArray = insertAtBeginning(demoArray, -1); // [-1,1,2,3]
+updatedArray[0].split('');
+// 코드에서는 오류로 뜨지 않지만 실행시키면 error가 발생함.
+// updatedArray의 인자는 모두 숫자인데 split은 string 객체에 사용할 수 있는 method기 때문.
+// ts에서는 왜 인식하지 못하나? utils 함수에 any로 지정했기 때문!
+// 그렇다고 utils 함수를 number로 지정하면 다른 곳에서 string 함수 배열에 사용할 수 없기 때문에 수정해주지 않을 거임.
+// 이러한 문제 해결을 위해 사용하는 것이 'generics'
+
+// insertAtBeginning 함수를 generic 함수로 바꿔보자.
+// <> 사이에 generic Type 지정. T는 type의 약자. 다른 식별자를 사용해도 됨!
+// generic Type은 함수안에서만 사용될 타입
+function insertAtBeginning2<T>(array: any[T], value: T) {
+  const newArray = [value, ...array];
+  return newArray;
+};
+const updatedArray2 = insertAtBeginning2(demoArray, -1);
+// generic 타입을 지정해주면 위의 코드에서 ts가 한번 더 깊이 확인한다.
+// any 타입이 아니라는 것을 generic 타입을 통해 알려줬기 때문에
+// 매개변수의 값으로 주어진 값의 type이 어떤건지 확인한다.
+// 하지만 generic 함수를 통해 array와 value의 타입이 동일하다는 것은 알려줬다.
+// 그래서 string으로 해도 함수가 적용된다!
+const stringArray = insertAtBeginning2(['a', 'b', 'c'], 'd');
+const testArray = insertAtBeginning2(demoArray, '2');
