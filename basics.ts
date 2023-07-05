@@ -61,3 +61,14 @@ union = true;
 // union type을 사용하는 거면 type inference 사용처럼 기본으로 할당한 값에 대한 자료형을 생략하면 안된다.
 // 지정할 모든 type을 작성해주어야함!
 let people: string | string[];
+
+/* Type Alian(타입 별칭): 중복되는 타입 지정 */
+// 아래의 type은 ts에서만 사용가능한 구문
+type Person = {
+  name: string;
+  age: number;
+};
+let user1: Person;
+let user2: Person;
+let usersArray: Person[];
+usersArray = [{ name: 'nora', age: 28 }, { name: 'Max', age: 30 }];
