@@ -39,3 +39,16 @@ let users: {
   name: string;
   age: number;
 }[] = [{ name: 'nora', age: 28 }, { name: 'Max', age: 30 }];
+
+
+/* Type inference(타입 추론) */
+
+let course = ' React - The Complete Guide';
+// course = 123;
+// type을 지정하지 않았는데, 왜 error 가 발생했을까?
+// js 파일에서는 위와 같이 코드를 작성해도 error가 발생하지 않음!
+// => type inference가 사용된 것임!
+// js는 최대한 많은 자료형 타입을 해당 코드에 맞게 사용하려고 하지만,
+// ts는 처음에 값을 할당하면 해당 type으로 자료형을 인식함.
+// => 이렇게 type inference를 활용해서 코드를 작성하는 것이 권장됨.
+// 타입을 불필요하게 추가로 지정하지 않아도 되니까!
