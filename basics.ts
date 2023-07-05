@@ -52,3 +52,12 @@ let course = ' React - The Complete Guide';
 // ts는 처음에 값을 할당하면 해당 type으로 자료형을 인식함.
 // => 이렇게 type inference를 활용해서 코드를 작성하는 것이 권장됨.
 // 타입을 불필요하게 추가로 지정하지 않아도 되니까!
+
+/* 하나의 변수에 두가지 타입을 지정해야 한다면? */
+// 한가지 변수에 한개 이상의 타입을 지정해 주는 기능 -> 유니온(union) 타입
+let union: string | number | boolean = 'Hello, world';
+union = 12;
+union = true;
+// union type을 사용하는 거면 type inference 사용처럼 기본으로 할당한 값에 대한 자료형을 생략하면 안된다.
+// 지정할 모든 type을 작성해주어야함!
+let people: string | string[];
