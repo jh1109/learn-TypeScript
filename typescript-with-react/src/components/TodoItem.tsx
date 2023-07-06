@@ -1,9 +1,10 @@
 import React from 'react';
-import Todo from '../models/todo';
 
-const TodoItem: React.FC<{ item: Todo }> = (props) => {
+// React.FC는 key와 같이 특별한 역할을 가진 props를 사용할 수 있게 해준다.
+// 그래서 TodoItem에 key를 props로 지정할 수 있는 것이다.
+const TodoItem: React.FC<{ text: string }> = (props) => {
   return (
-    <li key={props.item.id}>{props.item.text}</li>
+    <li>{props.text}</li>
   )
 };
 
