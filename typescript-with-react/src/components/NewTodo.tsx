@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 
-const NewTodo = () => {
+const NewTodo: React.FC<{ onAddTodo: (text: string) => void }> = (props) => {
   const todoTextInputRef = useRef<HTMLInputElement>(null);
 
   // onClick 이벤트일 경우는 event: React.MouseEvent
@@ -14,6 +14,7 @@ const NewTodo = () => {
     const enteredText = todoTextInputRef.current!.value;
 
     if (enteredText.trim().length === 0) return;
+    props.onAddTodo(enteredText);
   };
   return (
     <form onSubmit={submitHandler}>
